@@ -1,0 +1,14 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        n = len(nums)
+        sum = 0
+        got = []
+        for i in range(n):
+            for j in range(i+1, n):
+                sum = nums[i]+nums[j]
+                if sum == target:
+                    got.append(i)
+                    got.append(j)
+                    return got
+# O(N^2) RunTime
+        
