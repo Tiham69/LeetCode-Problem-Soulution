@@ -1,3 +1,6 @@
+# O(N^2) RunTime
+# python solution
+
 class Solution(object):
     def twoSum(self, nums, target):
         n = len(nums)
@@ -10,5 +13,4 @@ class Solution(object):
                     got.append(i)
                     got.append(j)
                     return got
-# O(N^2) RunTime
-        
+
