@@ -1,0 +1,38 @@
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        
+        n = len(s)
+        s2 = ""
+        max = 0
+
+        for j in range(n): # not needed in recursive func
+            s2 = "" 
+            for i in s[j:]: # put new string
+                if i not in s2:
+                    s2 += i
+                    if len(s2) > max:
+                        max = len(s2)
+                else:
+                    break # str is shortend here
+        return max # if str is empty return max
+
+        # use a recursive func to solve
+
+        
+# with recursion (mem limit exceds)
+# class Solution(object):
+#     def lengthOfLongestSubstring(self, s):
+#         """
+#         :type s: str
+#         :rtype: int
+#         """
+#         if s == "":
+#             return 0
+#         else:
+#             s2 = ""
+#             for i in s:
+#                 if i not in s2:
+#                     s2 += i
+#                 else:
+#                     break
+#             return max(len(s2), self.lengthOfLongestSubstring(s[1:]))
