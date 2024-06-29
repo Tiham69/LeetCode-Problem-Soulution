@@ -1,0 +1,58 @@
+class Solution(object):
+  def convert(self, s, numRows):
+    # Tihams ( 20% Runtime / 74% Memory)
+    #
+
+        if numRows == 1:
+            return s
+        list = [[] for _ in range(numRows)]
+
+        count, d = 0, 1
+
+        while s:
+            if count == numRows:
+                d = 0
+                count = -2
+            elif count == (-numRows - 1):
+                d = 1
+                count = 1
+
+            if d == 1 and count != numRows:
+                list[count].append(s[0])
+                s = s[1:]
+                count += 1
+            elif d == 0 and count != (-numRows - 1):
+                list[count].append(s[0])
+                s = s[1:]
+                count -= 1
+
+        fs = ""
+        for i in range(numRows):
+            list[i] = "".join(list[i])
+
+        return "".join(list)
+
+
+# others solution ( 50% Runtime / 50% Memory)
+# O(n) 
+
+# if numRows == 1:
+#   return s
+
+# idx, d = 0, 1
+# rows = [[] for _ in range(numRows)]
+
+# for char in s:
+#   rows[idx].append(char)
+
+#   if idx == 0:
+#       d = 1
+#   elif idx == numRows - 1:
+#       d = -1
+
+#   idx += d
+
+# for i in range(numRows):
+#   rows[i] = "".join(rows[i])
+
+# return "".join(rows)
