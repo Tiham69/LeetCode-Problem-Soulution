@@ -1,0 +1,19 @@
+class Solution(object):
+    def reverse(self, x):
+        v = x
+        max = pow(2, 31)-1
+        min = -(pow(2, 31))
+        rev = 0
+        x = abs(x)
+
+        while x > 0:
+            m = x%10
+            rev = rev*10 + m
+            x /= 10
+        
+        if min >= rev or rev >= max:
+            return 0
+        else:
+            if v > 0:
+                return rev
+            return -rev
