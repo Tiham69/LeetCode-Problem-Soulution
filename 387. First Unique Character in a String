@@ -1,0 +1,25 @@
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        
+        # 93 memory and 19% runtime
+        # O(N)
+
+        found = {}
+        idx = {}
+
+        for char in range(len(s)):
+            if s[char] not in found:
+                found[s[char]] = 0
+                idx[s[char]] = char
+            else:
+                found[s[char]] += 1
+ 
+        key = found.keys()
+
+        for item in key:
+            if found[item] == 0:
+                return idx[item]
+        
+        return -1
+
+        
