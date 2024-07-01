@@ -1,0 +1,47 @@
+class Solution:
+    def opstr(self, s, index):
+        outstr = ""
+        for i in range(index, len(s)):
+            if (s[i] < "0" or s[i] > "9"):
+                break
+            if (s[i] >= "0" and s[i] <= "9"):
+                    outstr += s[i]
+        return outstr
+
+    def myAtoi(self, s: str) -> int:
+        outstr = ""
+        operator = ""
+
+        for i in range(len(s)):
+            if s[i] == " ":
+                continue
+                
+            if s[i] == "+":
+                index = i+1
+                operator = "+"
+                outstr = self.opstr(s, index)
+                break
+            elif s[i] == "-":
+                index = i+1
+                operator = "-"
+                outstr = self.opstr(s, index)
+                break
+            else:
+                outstr = self.opstr(s, i)
+                break
+        
+        
+        if len(outstr) == 0:
+            return 0
+        num = int(outstr)
+        if operator == "-":
+            
+            if num > pow(2, 31):
+                return -(pow(2,31))
+            return -num
+        else:
+            
+            if num > pow(2, 31)-1:
+                return pow(2, 31)-1
+            return num
+
