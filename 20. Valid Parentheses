@@ -1,0 +1,30 @@
+# O(n)
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        n = len(s)
+        stack = []
+        found = True
+
+        if s == "" or n%2 != 0:
+            return False
+
+        for i in s:
+            if i == "(":
+                stack.append("(")
+            elif i == "{":
+                stack.append("{")
+            elif i == "[":
+                stack.append("[")
+            elif i == ")" and len(stack) != 0 and stack[-1] == "(":
+                stack.pop()
+            elif i == "}" and len(stack) != 0 and stack[-1] == "{":
+                stack.pop()
+            elif i == "]" and len(stack) != 0 and stack[-1] == "[":
+                stack.pop()
+            else:
+                return False
+
+        if found and len(stack) == 0:
+            return True
+                
