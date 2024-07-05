@@ -1,0 +1,23 @@
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        
+        hashMap = {}
+        f_str = ""
+
+        for i in s:
+            if i not in hashMap:
+                hashMap[i] = 1
+            else:
+                hashMap[i] += 1
+        print(hashMap)
+        hashMap = {k: v for k, v in sorted(hashMap.items(), key=lambda item: item[1])}
+        print(hashMap)
+
+        keys = hashMap.keys()
+
+        for key in reversed(keys):
+            f_str += (key *hashMap[key])
+            print(f_str)
+
+        return f_str
+        
