@@ -1,0 +1,26 @@
+class Solution:
+    def numWaterBottles(self, numBottles: int, numExchange: int) -> int:
+
+        # O(1) runtime
+        # return numBottles + (numBottles-1)//(numExchange-1)
+        
+        # O(n)
+        drank = numBottles
+        empty = 0
+        filled = 0
+
+        while numBottles >= numExchange:
+             
+            empty = numBottles - ((numBottles//numExchange) * numExchange)
+            print("empty",empty)
+
+            filled = numBottles//numExchange
+            print("filled", filled)
+
+            drank += filled
+            print("drank ", drank)
+
+            numBottles = filled + empty
+            print("b num ", numBottles)
+
+        return drank
