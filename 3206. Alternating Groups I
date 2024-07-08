@@ -1,0 +1,25 @@
+class Solution:
+    def numberOfAlternatingGroups(self, colors: List[int]) -> int:
+
+        if 0 not in colors: return 0    # if any 0 is in the list
+        if 1 not in colors: return 0    # if any 1 is in the list
+
+        size = len(colors)  # size of total colors
+        group = 0           # total alternating colors
+        i = 0               # index
+
+        if colors[size-1] != colors[0] and colors[0] != colors[1]:          # checked if alt group is do able 
+            group += 1                                                      # with last + 1st + 2nd item
+
+        if colors[size-2] != colors[size-1] and colors[size-1] != colors[0]:# checked if alt group is do able 
+            group += 1                                                      # with last-1 + last + 1st item
+
+        while size-2 > 0:   # number of itteration exclued the last element
+
+            ck = colors[i] != colors[i+1] and colors[i+1] != colors[i+2] # if any group is present in array 
+            if ck:                                                       # from 1st to last - 1
+                group += 1
+            i += 1
+            size -= 1
+
+        return group 
