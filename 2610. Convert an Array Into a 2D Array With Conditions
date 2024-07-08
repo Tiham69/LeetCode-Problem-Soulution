@@ -1,0 +1,32 @@
+class Solution(object):
+    def findMatrix(self, nums):           
+                
+        list = []
+        list2 = []
+        n = len(nums)
+        j = 0
+
+               
+        list = []
+        list2 = []
+        n = len(nums)
+        j = 0
+
+        while nums != []:
+            for i in range(n+n):
+                if j >= len(nums):
+                    break
+                if len(nums) == 0:
+                    break
+                if nums[j] not in list:
+                    list.append(nums[j])
+                    nums.remove(nums[j])
+                    j = 0
+                        
+                else:
+                    j += 1
+                    
+            list2.append(list)
+            list = []
+            j = 0
+        return list2
